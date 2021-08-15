@@ -8,8 +8,16 @@ class ErrorPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(strError),
+    return Scaffold(
+      backgroundColor: Colors.brown[100],
+      appBar: AppBar(
+          backgroundColor: Colors.brown[400],
+          elevation: 0.0,
+          title: Text("Error Page")
+      ),
+      body: Center(
+        child: Text(strError, style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+      )
     );
   }
 }

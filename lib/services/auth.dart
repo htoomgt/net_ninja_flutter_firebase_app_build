@@ -37,5 +37,13 @@ Future signInAnon() async{
   // register with email & password
 
   // sign out
+  Future signout() async{
+    try{
+      return await _auth.signOut();
+    }catch(error){
+      print(error.toString());
+      return null;
+    }
+  }
 
 }

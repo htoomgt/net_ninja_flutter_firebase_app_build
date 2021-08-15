@@ -31,38 +31,23 @@ class _WrapperState extends State<Wrapper> {
     // print(user);
     print(widget.authUser);
 
-    return MaterialApp(
-      title : "Brew Crew",
-      home : Scaffold(
-        backgroundColor: Colors.brown[100],
-        appBar: AppBar(
-          backgroundColor: Colors.brown[400],
-          elevation: 0.0,
-          title: Text(getPageTitle(widget.pageName))
-        ),
-        body: LayoutBuilder(
-          builder: (context, constraints){
-            switch(widget.pageName){
-              case "ERROR":{
-                return ErrorPage(strError: "Firebase Initialization Error");
-              }break;
 
-              case "WRAPPER":{
-                return Authenticate();
-              }break;
+    if(widget.pageName == "ERROR"){
+      return ErrorPage(strError: "Error");
+    }
+    else{
+      if(widget.authUser == null){
 
-              case "LOADING":{
-                return Loading();
-              }break;
-              default:{
-                return Authenticate();
-              }
+        return Authenticate();
+      }
+      else{
+        return Home();
+      }
+    }
 
-            }
-          }
-        )
-      )
-    );
+
+
+
   }
 
   String getPageTitle(String pageName){

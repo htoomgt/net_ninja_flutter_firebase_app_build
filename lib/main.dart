@@ -34,17 +34,17 @@ class _AppState extends State<App> {
         stream: AuthService().user,
         builder: (context, snapshot){
           if(!snapshot.hasData){
-            return Wrapper(pageName: "LOADING");
+            return MaterialApp(home: Wrapper(pageName: "LOADING"));
           }
           if(!snapshot.hasData){
-            return Wrapper(pageName: "ERROR");
+            return MaterialApp(home: Wrapper(pageName: "ERROR"));
           }
 
           if (snapshot.connectionState == ConnectionState.done) {
 
           }
 
-          return Wrapper(pageName: "WRAPPER", authUser: snapshot.data);
+          return MaterialApp(home: Wrapper(pageName: "WRAPPER", authUser: snapshot.data));
 
         }
     );
