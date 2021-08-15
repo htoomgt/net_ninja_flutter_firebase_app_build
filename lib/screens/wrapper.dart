@@ -1,28 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase_app_build/models/app_user.dart';
 import 'package:flutter_firebase_app_build/screens/authenticate/authenticate.dart';
 import 'package:flutter_firebase_app_build/screens/home/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_firebase_app_build/screens/utils/error.dart';
 import 'package:flutter_firebase_app_build/screens/utils/loading.dart';
+import 'package:provider/provider.dart';
 
 class Wrapper extends StatefulWidget {
     Wrapper({
     required this.pageName,
+    this.authUser,
     Key? key}) : super(key: key);
 
   String pageName;
+  dynamic? authUser;
 
   @override
   _WrapperState createState() => _WrapperState();
 }
 
 class _WrapperState extends State<Wrapper> {
-  User? authUser;
+  // User? authUser;
 
 
 
   @override
   Widget build(BuildContext context) {
+    // final user = Provider.of<AppUser>(context);
+    // print(user);
+    print(widget.authUser);
+
     return MaterialApp(
       title : "Brew Crew",
       home : Scaffold(
