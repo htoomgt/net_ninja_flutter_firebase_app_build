@@ -4,23 +4,45 @@ import 'package:flutter_firebase_app_build/screens/wrapper.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_firebase_app_build/screens/utils/loading.dart';
 
-Future<void> main() async {
+Future<void> main()async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  runApp(MyApp());
+  runApp(App());
 }
 
-class MyApp extends StatelessWidget {
+class App extends StatefulWidget {
+  const App({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
+
+  @override
+  _AppState createState() => _AppState();
+}
+
+class _AppState extends State<App> {
+  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title : "Brew Crew",
-      home : Wrapper(),
+    return FutureBuilder(
+      future : _initialization,
+      builder : (context, snapshot){
+        if(snapshot.hasError){
+          return Wrapper(pageName: "ERROR");
+        }
+
+        // Once complete, show your application
+        if (snapshot.connectionState == ConnectionState.done) {
+          return Wrapper(pageName: "WRAPPER");
+        }
+
+        return Wrapper(pageName : "LOADING");
+
+      }
     );
   }
 }
+
+
+
 
 
 

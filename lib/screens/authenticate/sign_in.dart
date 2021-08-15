@@ -13,29 +13,21 @@ class _SignInState extends State<SignIn> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.brown[100],
-      appBar: AppBar(
-        backgroundColor: Colors.brown[400],
-        elevation: 0.0,
-        title : Text('Sign in to brew crew'),
-      ),
-      body : Container(
+    return Container(
         padding : EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
-         child : RaisedButton(
-           child : Text('Sign in to brew crew'),
-           onPressed: () async{
-              dynamic result = await _auth.signInAnon();
-              if(result == null){
-                print("We could'nt signed in!");
-              }
-              else{
-                print("signed in");
-                print(result.uid);
-              }
-           },
-         )
-      )
+        child : RaisedButton(
+          child : Text('Sign in to brew crew'),
+          onPressed: () async{
+            dynamic result = await _auth.signInAnon();
+            if(result == null){
+              print("We could'nt signed in!");
+            }
+            else{
+              print("signed in");
+              print(result.uid);
+            }
+          },
+        )
     );
   }
 }
