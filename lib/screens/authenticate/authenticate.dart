@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase_app_build/screens/authenticate/register.dart';
 import 'package:flutter_firebase_app_build/screens/authenticate/sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -14,7 +15,7 @@ class _AuthenticateState extends State<Authenticate> {
   Widget build(BuildContext context) {
 
     return Container(
-      child: SignIn()
+      child: Register()
     );
   }
 }
