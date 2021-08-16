@@ -33,6 +33,16 @@ Future signInAnon() async{
 
 
   // sign in with email & password
+  Future signInWithEmailAndPassword(String email, String password) async
+  {
+    try{
+      UserCredential result =  await _auth.signInWithEmailAndPassword(email: email, password: password);
+      User? user = result.user;
+      return _userFromFirebaseUser(user!);
+    }catch(e){
+
+    }
+  }
 
   // register with email & password
   Future registerWithEmailAndPassword(String email, String password) async
